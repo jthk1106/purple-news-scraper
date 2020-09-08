@@ -11,7 +11,6 @@ async function scrapeCnn() {
     const [firstLink] = await page.$x('//*[@id="us-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a')
     const firstHref = await firstLink.getProperty('href')
     const firstUrl = await firstHref.jsonValue()
-    console.log('hey')
 
     const [second] = await page.$x('//*[@id="us-zone-1"]/div[2]/div/div[1]/ul/li[2]/article/div/div/h3/a/span[1]')
     const secondText = await second.getProperty('innerText')
@@ -37,10 +36,10 @@ async function scrapeCnn() {
     await browser.close()
 
     return [
-        {firstTitle, firstUrl},
-        {secondTitle, secondUrl},
-        {thirdTitle, thirdUrl},
-        {fourthTitle, fourthUrl},
+        {title: firstTitle, url: firstUrl},
+        {title: secondTitle, url: secondUrl},
+        {title: thirdTitle, url: thirdUrl},
+        {title: fourthTitle, url: fourthUrl},
     ]
 };
 

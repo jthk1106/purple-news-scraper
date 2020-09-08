@@ -36,10 +36,10 @@ async function scrapeFox () {
     await browser.close()
 
     return [
-        {firstTitle, firstUrl},
-        {secondTitle, secondUrl},
-        {thirdTitle, thirdUrl},
-        {fourthTitle, fourthUrl},
+        {title: firstTitle, url: firstUrl},
+        {title: secondTitle, url: secondUrl},
+        {title: thirdTitle, url: thirdUrl},
+        {title: fourthTitle, url: fourthUrl},
     ]
 }
 
