@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = `1337`
+const port = `https://purple-news-scraper.herokuapp.com/` || `1337`
 
 const cnn = require('./cnnScraper')
 const fox = require('./foxScraper')
