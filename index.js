@@ -21,12 +21,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/cnn', async (req, res) => {
-  const scraped = await cnn.scrapeCnn().catch(err => console.log('err: ', err))
+  const scraped = await cnn.scrapeCnn()
   res.json(scraped)
 })
 
 app.get('/fox', async (req, res) => {
-  const scraped = await fox.scrapeFox().catch(err => console.log('err: ', err))
+  const scraped = await fox.scrapeFox()
   res.json(scraped)
 })
 
