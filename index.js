@@ -10,8 +10,8 @@ const morgan = require('morgan')
 app.use(morgan('common'))
 app.use(express.json())
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Content-Type')
+    res.header('Access-Control-Allow-Origin', 'https://purple-news.netlify.app/')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
     next()
 })
 
@@ -21,12 +21,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/cnn', async (req, res) => {
-  const scraped = await cnn.scrapeCnn()
+  const scraped = await cnn.scrapeCnn().catch(err => console.log('err: ', err))
   res.json(scraped)
 })
 
 app.get('/fox', async (req, res) => {
-  const scraped = await fox.scrapeFox()
+  const scraped = await fox.scrapeFox().catch(err => console.log('err: ', err))
   res.json(scraped)
 })
 
