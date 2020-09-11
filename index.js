@@ -8,14 +8,7 @@ const fox = require('./foxScraper')
 const morgan = require('morgan')
 const cors = require('cors')
 
-app.use(morgan('common'))
-app.use(express.json())
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*')
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-//     next()
-// })
-const whitelist = ['https://purple-news.netlify.app/']
+const whitelist = ['https://purple-news.netlify.app/', 'http://localhost:3000']
 const corsOptions = {
   origin: (origin, callback) => {
     if(whitelist.indexOf(origin) !== -1) {
@@ -26,6 +19,14 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions))
+
+app.use(morgan('common'))
+app.use(express.json())
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+//     next()
+// })
 
 app.get('/', (req, res) => {
   console.log('whats good world')
