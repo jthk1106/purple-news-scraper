@@ -1,4 +1,25 @@
 const puppeteer = require('puppeteer');
+const express = require('express');
+const router = express.Router();  
+
+const morgan = require('morgan');
+
+router.use(express.json());
+router.use(express.urlencoded({ extended: false }));
+
+router.use(morgan('dev'));
+
+router.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+/* GET home page. */
+router.get('/', async (req, res) => {
+    const data = await scrapeFox()
+    res.json(data)
+})
 
 async function scrapeFox () {
     const browser = await puppeteer.launch()
@@ -43,6 +64,8 @@ async function scrapeFox () {
     ]
 }
 
-module.exports = {
-    scrapeFox
-}
+// module.exports = {
+//     scrapeFox
+// }
+
+module.exports = router
