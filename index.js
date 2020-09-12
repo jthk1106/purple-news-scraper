@@ -32,8 +32,8 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  console.log('whats good world')
-  res.json('Hello World!')
+  console.log('whats good oojoo')
+  res.json('Hello Oojoo!')
 })
 
 app.get('/cnn', async (req, res) => {
