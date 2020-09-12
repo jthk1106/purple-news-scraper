@@ -6,7 +6,7 @@ const cnn = require('./cnnScraper')
 const fox = require('./foxScraper')
 
 const morgan = require('morgan')
-const cors = require('cors')
+// const cors = require('cors')
 
 // const whitelist = ['https://purple-news.netlify.app/', 'http://localhost:3000']
 // const corsOptions = {
