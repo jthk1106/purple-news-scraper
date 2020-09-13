@@ -1,6 +1,6 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
-const port = process.env.PORT || `1337`
 
 const cnn = require('./cnnScraper')
 const fox = require('./foxScraper')
@@ -35,8 +35,7 @@ app.use('/cnn', cnn);
 app.use('/fox', fox)
 
 app.get('/', (req, res) => {
-  console.log('whats good oojoo')
-  res.json('Hello Oojoo!')
+  res.json('Scraper says hello Oojoo!')
 })
 
 // app.get('/cnn', async (req, res) => {
@@ -65,6 +64,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`)
+const PORT = process.env.PORT || 2222
+app.listen(PORT, () => {
+  console.log(`Listening at http://localhost:${PORT}`)
 })
